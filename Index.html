@@ -1,0 +1,2670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCareer.Space — Anna Perova | IT & AI Career Consultant</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+           ============================================ */
+        :root {
+            --bg-deep: #06060e;
+            --bg-dark: #0a0a18;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-hover: rgba(255, 255, 255, 0.15);
+            --text-primary: #f0f0f5;
+            --text-secondary: rgba(240, 240, 245, 0.6);
+            --text-muted: rgba(240, 240, 245, 0.4);
+            --neon-purple: #8b5cf6;
+            --neon-magenta: #ec4899;
+            --neon-cyan: #06b6d4;
+            --neon-blue: #3b82f6;
+            --gradient-main: linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4);
+            --gradient-purple-magenta: linear-gradient(135deg, #8b5cf6, #ec4899);
+            --gradient-magenta-cyan: linear-gradient(135deg, #ec4899, #06b6d4);
+            --glass-blur: blur(20px);
+            --glass-blur-strong: blur(40px);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --shadow-neon: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(236, 72, 153, 0.08);
+            --shadow-neon-strong: 0 0 40px rgba(139, 92, 246, 0.25), 0 0 80px rgba(236, 72, 153, 0.15);
+            --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ::selection {
+            background: rgba(139, 92, 246, 0.3);
+            color: #fff;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.5); }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-purple-magenta {
+            background: var(--gradient-purple-magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: var(--glass-blur-strong);
+            -webkit-backdrop-filter: var(--glass-blur-strong);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--neon-purple);
+            margin-bottom: 16px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            filter: blur(6px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all 0.4s ease;
+        }
+
+        .navbar-custom.scrolled {
+            padding: 10px 0;
+            background: rgba(6, 6, 14, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar-brand-custom {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .nav-link-custom {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary) !important;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link-custom:hover,
+        .nav-link-custom.active {
+            color: var(--text-primary) !important;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-cta {
+            background: var(--gradient-purple-magenta) !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            padding: 8px 20px !important;
+            border-radius: 100px !important;
+            font-size: 0.82rem !important;
+            border: none;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 30px rgba(139, 92, 246, 0.4) !important;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        /* Animated gradient blobs */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: blob-float 8s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #8b5cf6, transparent 70%);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ec4899, transparent 70%);
+            bottom: -5%;
+            left: -5%;
+            animation-delay: -3s;
+        }
+
+        .hero-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #06b6d4, transparent 70%);
+            top: 40%;
+            left: 30%;
+            animation-delay: -5s;
+            opacity: 0.2;
+        }
+
+        @keyframes blob-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -40px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(15px, 30px) scale(1.02); }
+        }
+
+        /* Grid overlay */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--neon-purple);
+            margin-bottom: 28px;
+            animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-badge i { font-size: 0.7rem; }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            animation: fade-in-up 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 400;
+            animation: fade-in-up 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            animation: fade-in-up 0.8s 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        /* Buttons */
+        .btn-neon {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            background: var(--gradient-purple-magenta);
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #a78bfa, #f472b6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-neon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(139, 92, 246, 0.5);
+            color: #fff;
+        }
+
+        .btn-neon:hover::before { opacity: 1; }
+        .btn-neon span, .btn-neon i { position: relative; z-index: 1; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Hero right side - floating card */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fade-in-up 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .hero-card {
+            width: 340px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-neon-strong);
+            animation: card-float 6s ease-in-out infinite;
+        }
+
+        @keyframes card-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .hero-card-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .hero-card-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-role {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero-card-stats {
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-card-stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-card-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Floating mini-cards */
+        .float-tag {
+            position: absolute;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: tag-float 5s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        .float-tag-1 {
+            top: 10%;
+            right: 0;
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+            animation-delay: -1s;
+        }
+
+        .float-tag-2 {
+            bottom: 15%;
+            left: -10%;
+            background: rgba(6, 182, 212, 0.15);
+            color: #22d3ee;
+            animation-delay: -3s;
+        }
+
+        .float-tag-3 {
+            top: 55%;
+            right: -15%;
+            background: rgba(236, 72, 153, 0.15);
+            color: #f472b6;
+            animation-delay: -2s;
+        }
+
+        @keyframes tag-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ============================================
+           WHY SECTION
+           ============================================ */
+        .why-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+        }
+
+        .why-card {
+            padding: 32px;
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .why-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glass-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .why-card:hover::before { opacity: 1; }
+
+        .why-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            transition: var(--transition-fast);
+        }
+
+        .why-icon-1 {
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .why-icon-2 {
+            background: rgba(236, 72, 153, 0.12);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        .why-icon-3 {
+            background: rgba(6, 182, 212, 0.12);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .why-icon-4 {
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .why-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ============================================
+           SERVICES / PRICING SECTION
+           ============================================ */
+        .pricing-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .pricing-card {
+            padding: 40px 32px;
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-xl);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-glass-hover);
+        }
+
+        .pricing-card.featured {
+            background: rgba(139, 92, 246, 0.06);
+            border-color: rgba(139, 92, 246, 0.25);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .pricing-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-main);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 4px 14px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: var(--gradient-purple-magenta);
+            color: #fff;
+            border-radius: 100px;
+        }
+
+        .pricing-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .pricing-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .pricing-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px;
+            flex: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            line-height: 1.5;
+        }
+
+        .pricing-features li i {
+            color: var(--neon-purple);
+            font-size: 0.85rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured .pricing-features li i {
+            color: var(--neon-magenta);
+        }
+
+        .btn-pricing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 24px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-pricing:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            color: #fff;
+        }
+
+        .btn-pricing-featured {
+            background: var(--gradient-purple-magenta) !important;
+            border: none !important;
+            color: #fff !important;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-pricing-featured:hover {
+            box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5) !important;
+        }
+
+        /* ============================================
+           TRUST / LOGOS SECTION
+           ============================================ */
+        .trust-section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .trust-section::before,
+        .trust-section::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+        }
+
+        .trust-section::before { top: 0; }
+        .trust-section::after { bottom: 0; }
+
+        .trust-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trust-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .trust-logo {
+            padding: 10px 22px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 100px;
+            transition: var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .trust-logo:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================================
+           TESTIMONIALS SECTION
+           ============================================ */
+        .testimonials-section {
+            padding: 100px 0;
+        }
+
+        .testimonial-card {
+            padding: 32px;
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glass-hover);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 16px;
+            color: #fbbf24;
+            font-size: 0.85rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            flex: 1;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-role {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           STATS SECTION
+           ============================================ */
+        .stats-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.03), transparent 50%, rgba(236, 72, 153, 0.03));
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            max-width: 260px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           GUIDES SECTION
+           ============================================ */
+        .guides-section {
+            padding: 100px 0;
+        }
+
+        .guide-card {
+            padding: 32px;
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .guide-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glass-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .guide-card.featured-guide {
+            border-color: rgba(139, 92, 246, 0.25);
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .guide-card.featured-guide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+        }
+
+        .guide-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .guide-icon-ml {
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .guide-icon-pm {
+            background: rgba(236, 72, 153, 0.12);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        .guide-icon-qa {
+            background: rgba(6, 182, 212, 0.12);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .guide-icon-js {
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .guide-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .guide-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .guide-price {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .guide-price-free {
+            color: #34d399;
+        }
+
+        .guide-price-paid {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-get-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--neon-purple);
+            margin-top: 8px;
+            transition: var(--transition-fast);
+        }
+
+        .guide-get-btn:hover {
+            gap: 10px;
+            color: #a78bfa;
+        }
+
+        /* ============================================
+           BLOG SECTION
+           ============================================ */
+        .blog-section {
+            padding: 100px 0;
+        }
+
+        .blog-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .blog-filter-btn {
+            padding: 8px 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .blog-filter-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .blog-filter-btn.active {
+            color: #fff;
+            background: var(--gradient-purple-magenta);
+            border-color: transparent;
+            box-shadow: 0 2px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .blog-card {
+            padding: 28px;
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glass-hover);
+            transform: translateY(-4px);
+        }
+
+        .blog-card-tag {
+            display: inline-flex;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 100px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .tag-ai {
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .tag-career {
+            background: rgba(236, 72, 153, 0.12);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        .tag-hacks {
+            background: rgba(6, 182, 212, 0.12);
+            color: #22d3ee;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .tag-trends {
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .blog-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .blog-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-card.hidden-card {
+            display: none;
+        }
+
+        /* ============================================
+           FAQ SECTION
+           ============================================ */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .accordion-custom .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md) !important;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: var(--transition-fast);
+        }
+
+        .accordion-custom .accordion-item:hover {
+            border-color: var(--border-glass-hover);
+        }
+
+        .accordion-custom .accordion-button {
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 20px 24px;
+            box-shadow: none !important;
+            border: none;
+        }
+
+        .accordion-custom .accordion-button::after {
+            filter: invert(1);
+            opacity: 0.4;
+            transition: var(--transition-fast);
+        }
+
+        .accordion-custom .accordion-button:not(.collapsed)::after {
+            filter: invert(0.5) sepia(1) saturate(5) hue-rotate(230deg);
+            opacity: 1;
+            transform: rotate(180deg);
+        }
+
+        .accordion-custom .accordion-button:not(.collapsed) {
+            background: rgba(139, 92, 246, 0.06);
+            color: #fff;
+        }
+
+        .accordion-custom .accordion-body {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            padding: 0 24px 20px;
+        }
+
+        /* ============================================
+           CONTACT / CTA SECTION
+           ============================================ */
+        .cta-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .cta-box {
+            padding: 60px 48px;
+            background: rgba(139, 92, 246, 0.06);
+            backdrop-filter: var(--glass-blur-strong);
+            -webkit-backdrop-filter: var(--glass-blur-strong);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+        }
+
+        .cta-box::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 60px 0 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+            padding-left: 4px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            transition: var(--transition-fast);
+        }
+
+        .footer-contact-item:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-contact-item i {
+            font-size: 1rem;
+            color: var(--neon-purple);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-copyright {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 8px;
+        }
+
+        .footer-social {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition-fast);
+        }
+
+        .footer-social:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 991.98px) {
+            .hero-visual { margin-top: 48px; }
+            .hero-card { width: 280px; padding: 24px; }
+            .float-tag { display: none; }
+            .cta-box { padding: 40px 24px; }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-section { padding: 100px 0 60px; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions .btn-neon,
+            .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+            .pricing-card { padding: 28px 20px; }
+            .stat-card { padding: 24px 12px; }
+            .blog-filters { gap: 6px; }
+            .blog-filter-btn { padding: 6px 14px; font-size: 0.78rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        /* ============================================
+           MOBILE NAV TOGGLE FIX
+           ============================================ */
+        .navbar-toggler-custom {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 0;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .navbar-toggler-custom:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar-toggler-custom span {
+            display: block;
+            width: 18px;
+            height: 1.5px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition-fast);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(6, 6, 14, 0.95);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: var(--radius-md);
+                padding: 16px;
+                margin-top: 12px;
+            }
+        }
+
+        /* ============================================
+           3D TILT EFFECT (via JS class)
+           ============================================ */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* ============================================
+           PARTICLES CANVAS
+           ============================================ */
+        #particles-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         NAVBAR
+         ============================================ -->
+    <nav class="navbar-custom" id="navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="#" class="navbar-brand-custom">
+                    <span class="brand-dot"></span>
+                    TechCareer<span class="gradient-text">.Space</span>
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler-custom d-lg-none" id="navToggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <!-- Nav Links -->
+                <div class="collapse d-lg-flex align-items-center gap-1" id="navMenu">
+                    <a href="#why" class="nav-link-custom">Why Me</a>
+                    <a href="#pricing" class="nav-link-custom">Services</a>
+                    <a href="#testimonials" class="nav-link-custom">Reviews</a>
+                    <a href="#guides" class="nav-link-custom">Guides</a>
+                    <a href="#blog" class="nav-link-custom">Blog</a>
+                    <a href="#faq" class="nav-link-custom">FAQ</a>
+                    <a href="#contact" class="nav-link-custom nav-cta ms-lg-2">Get Strategy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero-section" id="hero">
+        <!-- Animated blobs -->
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <!-- Grid overlay -->
+        <div class="hero-grid"></div>
+        <!-- Particles -->
+        <canvas id="particles-canvas"></canvas>
+
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-badge">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                        17+ Years in IT & AI Recruiting
+                    </div>
+                    <h1 class="hero-title">
+                        Your Career in IT & AI.<br>
+                        <span class="gradient-text">Not just a job.</span><br>
+                        The Future.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Everything you are looking for is closer than it seems. Get a career strategy and start acting!
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn-neon">
+                            <span>Get Strategy</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#pricing" class="btn-ghost">
+                            <span>View Services</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-flex justify-content-center">
+                    <div class="hero-visual">
+                        <div class="hero-card">
+                            <div class="hero-card-avatar">AP</div>
+                            <div class="hero-card-name">Anna Perova</div>
+                            <div class="hero-card-role">Career Consultant & Technical HR Expert</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
+                                <span style="padding: 3px 10px; font-size: 0.68rem; font-weight: 600; background: rgba(139,92,246,0.12); color: #a78bfa; border-radius: 100px; border: 1px solid rgba(139,92,246,0.2);">Samsung AI</span>
+                                <span style="padding: 3px 10px; font-size: 0.68rem; font-weight: 600; background: rgba(236,72,153,0.12); color: #f472b6; border-radius: 100px; border: 1px solid rgba(236,72,153,0.2);">Huawei</span>
+                                <span style="padding: 3px 10px; font-size: 0.68rem; font-weight: 600; background: rgba(6,182,212,0.12); color: #22d3ee; border-radius: 100px; border: 1px solid rgba(6,182,212,0.2);">MEPhI MSc</span>
+                            </div>
+                            <div class="hero-card-stats">
+                                <div>
+                                    <div class="hero-card-stat-num">17+</div>
+                                    <div class="hero-card-stat-label">Years Exp.</div>
+                                </div>
+                                <div>
+                                    <div class="hero-card-stat-num">3000+</div>
+                                    <div class="hero-card-stat-label">Clients</div>
+                                </div>
+                                <div>
+                                    <div class="hero-card-stat-num">35+</div>
+                                    <div class="hero-card-stat-label">Countries</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating tags -->
+                        <div class="float-tag float-tag-1">
+                            <i class="bi bi-patch-check-fill" style="margin-right: 4px;"></i> MAANG Expert
+                        </div>
+                        <div class="float-tag float-tag-2">
+                            <i class="bi bi-globe2" style="margin-right: 4px;"></i> Global Relocation
+                        </div>
+                        <div class="float-tag float-tag-3">
+                            <i class="bi bi-cpu" style="margin-right: 4px;"></i> AI/ML Specialist
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         WHY SECTION
+         ============================================ -->
+    <section class="why-section" id="why">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label reveal">
+                    <i class="bi bi-stars"></i> Why TechCareer.Space
+                </div>
+                <h2 class="section-title reveal reveal-delay-1">Built for Your <span class="gradient-text">Career Leap</span></h2>
+                <p class="section-subtitle mx-auto reveal reveal-delay-2">Whether you're starting fresh or aiming for the C-suite, I have a proven path for you.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 reveal reveal-delay-1">
+                    <div class="why-card tilt-card">
+                        <div class="why-icon why-icon-1">
+                            <i class="bi bi-rocket-takeoff"></i>
+                        </div>
+                        <h4>From Zero to IT</h4>
+                        <p>For beginners of any age and background. Step-by-step guidance to break into the tech industry with confidence.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal reveal-delay-2">
+                    <div class="why-card tilt-card">
+                        <div class="why-icon why-icon-2">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h4>For Experts & C-Level</h4>
+                        <p>Remote work, relocation to Germany, USA, Canada. MAANG-level strategies for senior professionals and executives.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal reveal-delay-3">
+                    <div class="why-card tilt-card">
+                        <div class="why-icon why-icon-3">
+                            <i class="bi bi-lightning"></i>
+                        </div>
+                        <h4>Professional Program</h4>
+                        <p>1–3 sessions (1.5h each) to fix your CV, LinkedIn, and Cover Letter. Save 10+ hours of search time immediately.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 reveal reveal-delay-4">
+                    <div class="why-card tilt-card">
+                        <div class="why-icon why-icon-4">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                        <h4>Individual Approach</h4>
+                        <p>Deep expertise in Digital/IT/AI markets across Russia, Europe, USA, and Asia. Tailored strategies, not templates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRICING SECTION
+         ============================================ -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label reveal">
+                    <i class="bi bi-box-seam"></i> Services & Pricing
+                </div>
+                <h2 class="section-title reveal reveal-delay-1">Choose Your <span class="gradient-text">Career Package</span></h2>
+                <p class="section-subtitle mx-auto reveal reveal-delay-2">Transparent pricing. No hidden fees. Real results.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Basic -->
+                <div class="col-lg-4 col-md-6 reveal reveal-delay-1">
+                    <div class="pricing-card tilt-card">
+                        <div class="pricing-name">Basic</div>
+                        <div class="pricing-price">10,000 <span>RUB</span></div>
+                        <div class="pricing-desc">Quick career boost — perfect for a focused review and actionable feedback.</div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> 1.5h Personal Consultation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> CV & LinkedIn Review</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Professional Summary Writing</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Cover Letter Advice</li>
+                        </ul>
+                        <a href="#contact" class="btn-pricing">
+                            Get Started <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resume+ (Featured) -->
+                <div class="col-lg-4 col-md-6 reveal reveal-delay-2">
+                    <div class="pricing-card featured tilt-card">
+                        <div class="pricing-badge">Recommended</div>
+                        <div class="pricing-name">Resume+</div>
+                        <div class="pricing-price">25,000 <span>RUB</span></div>
+                        <div class="pricing-desc">Comprehensive package for serious job seekers targeting top companies.</div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Everything in Basic</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Global Talent Visa Advice</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 1 Month Ongoing Support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Detailed & Short CVs (English)</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Expert Selection of 30–40 Vacancies</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Job Search Strategy</li>
+                        </ul>
+                        <a href="#contact" class="btn-pricing btn-pricing-featured">
+                            Get Started <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Maximum -->
+                <div class="col-lg-4 col-md-6 reveal reveal-delay-3">
+                    <div class="pricing-card tilt-card">
+                        <div class="pricing-name">Maximum</div>
+                        <div class="pricing-price">50,000 <span>RUB</span></div>
+                        <div class="pricing-desc">Full-service career acceleration with personal networking and introductions.</div>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Everything in Resume+</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Personalized Search Strategy</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Direct Introductions & Networking</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Insider Referrals Support</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Priority Access to Hidden Roles</li>
+                        </ul>
+                        <a href="#contact" class="btn-pricing">
+                            Get Started <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TRUST SECTION
+         ============================================ -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-label reveal">Trusted by employees of</div>
+            <div class="trust-logos reveal reveal-delay-1">
+                <span class="trust-logo">T-Bank</span>
+                <span class="trust-logo">Yandex</span>
+                <span class="trust-logo">Sber</span>
+                <span class="trust-logo">VK</span>
+                <span class="trust-logo">Google</span>
+                <span class="trust-logo">Amazon</span>
+                <span class="trust-logo">Nvidia</span>
+                <span class="trust-logo">Microsoft</span>
+                <span class="trust-logo">Huawei</span>
+                <span class="trust-logo">Samsung</span>
+                <span class="trust-logo">Perplexity.AI</span>
+                <span class="trust-logo">Flo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TESTIMONIALS SECTION
+         ============================================ -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label reveal">
+                    <i class="bi bi-chat-quote"></i> Client Stories
+                </div>
+                <h2 class="section-title reveal reveal-delay-1">What My <span class="gradient-text">Clients Say</span></h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Testimonial 1 -->
+                <div class="col-lg-6 reveal reveal-delay-1">
+                    <div class="testimonial-card tilt-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Anna helped me get into Samsung AI Center, and later helped my startup get investment from a VP at Google. Her understanding of the AI landscape and hiring processes is unmatched. She doesn't just help you find a job — she opens doors."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" style="background: var(--gradient-purple-magenta);">DU</div>
+                            <div>
+                                <div class="testimonial-name">Dmitry Ulyanov, PhD</div>
+                                <div class="testimonial-role">CEO at in3D, USA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="col-lg-6 reveal reveal-delay-2">
+                    <div class="testimonial-card tilt-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Thanks to one call with Anna... I got an offer in a week. Fast and effective! She instantly understood my profile and knew exactly where I should apply. No wasted time, no generic advice."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" style="background: var(--gradient-magenta-cyan);">SG</div>
+                            <div>
+                                <div class="testimonial-name">Sergey Grebenkin</div>
+                                <div class="testimonial-role">Sr. Manager, Align Technology, USA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="col-lg-6 reveal reveal-delay-3">
+                    <div class="testimonial-card tilt-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Anna has excellent understanding of the AI market in Russia and US. She knew the team leads I was targeting and helped me position my experience exactly the right way. Incredibly well-connected."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">DT</div>
+                            <div>
+                                <div class="testimonial-name">Dmitry Tochilkin</div>
+                                <div class="testimonial-role">Sr. Researcher, Yandex Self-Driving (ex-Google)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="col-lg-6 reveal reveal-delay-4">
+                    <div class="testimonial-card tilt-card">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">"Helped me adapt in Israel, build a strategy... Got a Job Offer in 4 months. Thank you for the inspiration! Anna's emotional support combined with her strategic thinking made all the difference during my relocation."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">AK</div>
+                            <div>
+                                <div class="testimonial-name">Asya Kogan</div>
+                                <div class="testimonial-role">Sr. Frontend Developer, Buildots</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         STATS SECTION
+         ============================================ -->
+    <section class="stats-section">
+        <div class="container position-relative" style="z-index: 1;">
+            <div class="row">
+                <div class="col-md-4 reveal">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="35" data-suffix="+">0</div>
+                        <div class="stat-label">Countries — Russia, Germany, USA, UAE, Israel, UK, and more</div>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal reveal-delay-1">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="3000" data-suffix="+">0</div>
+                        <div class="stat-label">Clients served — with income increases up to +$45k/year</div>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal reveal-delay-2">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="185000" data-prefix="$" data-suffix="/yr">0</div>
+                        <div class="stat-label">Average salary for clients placed in FAANG/MAANG</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GUIDES SECTION
+         ============================================ -->
+    <section class="guides-section" id="guides">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label reveal">
+                    <i class="bi bi-journal-richtext"></i> Resources
+                </div>
+                <h2 class="section-title reveal reveal-delay-1">Accelerate Your Prep with <span class="gradient-text">My Guides</span></h2>
+                <p class="section-subtitle mx-auto reveal reveal-delay-2">Curated interview question sets built from real hiring processes at top tech companies.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Guide 1 - Featured -->
+                <div class="col-lg-3 col-md-6 reveal reveal-delay-1">
+                    <div class="guide-card featured-guide tilt-card">
+                        <div class="guide-icon guide-icon-ml">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h4>ML Interview Questions Guide</h4>
+                        <p>Top questions for Machine Learning roles at FAANG, top startups, and research labs. Covers theory, coding, and system design.</p>
+                        <div class="guide-price guide-price-paid">2,500 RUB</div>
+                        <a href="#contact" class="guide-get-btn">
+                            Get Guide <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 2 -->
+                <div class="col-lg-3 col-md-6 reveal reveal-delay-2">
+                    <div class="guide-card tilt-card">
+                        <div class="guide-icon guide-icon-pm">
+                            <i class="bi bi-kanban"></i>
+                        </div>
+                        <h4>Product Management Interview Questions</h4>
+                        <p>Strategy, execution, analytics, and behavioral questions for PM roles at top tech companies worldwide.</p>
+                        <div class="guide-price guide-price-free">Free</div>
+                        <a href="#contact" class="guide-get-btn">
+                            Download <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 3 -->
+                <div class="col-lg-3 col-md-6 reveal reveal-delay-3">
+                    <div class="guide-card tilt-card">
+                        <div class="guide-icon guide-icon-qa">
+                            <i class="bi bi-bug"></i>
+                        </div>
+                        <h4>QA Interview Questions</h4>
+                        <p>Manual testing, automation, API testing, and scenario-based questions to ace your next QA interview.</p>
+                        <div class="guide-price guide-price-free">Free</div>
+                        <a href="#contact" class="guide-get-btn">
+                            Download <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 4 -->
+                <div class="col-lg-3 col-md-6 reveal reveal-delay-4">
+                    <div class="guide-card tilt-card">
+                        <div class="guide-icon guide-icon-js">
+                            <i class="bi bi-braces"></i>
+                        </div>
+                        <h4>JavaScript Interview Questions</h4>
+                        <p>From closures to async patterns, DOM to frameworks — everything you need for frontend and full-stack JS roles.</p>
+                        <div class="guide-price guide-price-free">Free</div>
+                        <a href="#contact" class="guide-get-btn">
+                            Download <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         BLOG SECTION
+         ============================================ -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="text-center mb-4">
+                <div class="section-label reveal">
+                    <i class="bi bi-pencil-square"></i> Blog
+                </div>
+                <h2 class="section-title reveal reveal-delay-1">Insights on <span class="gradient-text">IT Careers & AI</span></h2>
+            </div>
+
+            <!-- Filters -->
+            <div class="blog-filters justify-content-center reveal reveal-delay-2">
+                <button class="blog-filter-btn active" data-filter="all">All</button>
+                <button class="blog-filter-btn" data-filter="ai">AI</button>
+                <button class="blog-filter-btn" data-filter="career">Career</button>
+                <button class="blog-filter-btn" data-filter="hacks">Hacks</button>
+                <button class="blog-filter-btn" data-filter="trends">Trends</button>
+            </div>
+
+            <div class="row g-4" id="blogGrid">
+                <!-- Blog Card 1 -->
+                <div class="col-lg-4 col-md-6 blog-item" data-category="ai">
+                    <div class="blog-card tilt-card">
+                        <span class="blog-card-tag tag-ai">AI</span>
+                        <h4>How AI Is Changing the Hiring Process in 2024</h4>
+                        <p>From automated resume screening to AI-driven interviews — what candidates need to know to stay ahead.</p>
+                        <div class="blog-card-meta">
+                            <span><i class="bi bi-clock me-1"></i> 6 min read</span>
+                            <span><i class="bi bi-calendar3 me-1"></i> Dec 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 2 -->
+                <div class="col-lg-4 col-md-6 blog-item" data-category="career">
+                    <div class="blog-card tilt-card">
+                        <span class="blog-card-tag tag-career">Career</span>
+                        <h4>From Junior to Senior: The Real Timeline Nobody Tells You</h4>
+                        <p>Busting the myth of rapid promotion and building a sustainable growth path in tech.</p>
+                        <div class="blog-card-meta">
+                            <span><i class="bi bi-clock me-1"></i> 8 min read</span>
+                            <span><i class="bi bi-calendar3 me-1"></i> Nov 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 3 -->
+                <div class="col-lg-4 col-md-6 blog-item" data-category="hacks">
+                    <div class="blog-card tilt-card">
+                        <span class="blog-card-tag tag-hacks">Hacks</span>
+                        <h4>5 LinkedIn Hacks That Got My Clients 3x More Recruiter Views</h4>
+                        <p>Practical, data-backed tips to optimize your LinkedIn profile for maximum visibility.</p>
+                        <div class="blog-card-meta">
+                            <span><i class="bi bi-clock me-1"></i> 5 min read</span>
+                            <span><i class="bi bi-calendar3 me-1"></i> Oct 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 4 -->
+                <div class="col-lg-4 col-md-6 blog-item" data-category="trends">
+                    <div class="blog-card tilt-card">
+                        <span class="blog-card-tag tag-trends">Trends</span>
+                        <h4>IT Labor Market Trends: What's Hot in 2025</h4>
+                        <p>Emerging roles, salary benchmarks, and the skills gap — a comprehensive overview.</p>
+                        <div class="blog-card-meta">
+                            <span><i class="bi bi-clock me-1"></i> 10 min read</span>
+                            <span><i class="bi bi-calendar3 me-1"></i> Dec 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 5 -->
+                <div class="col-lg-4 col-md-6 blog-item" data-category="ai">
+                    <div class="blog-card tilt-card">
+                        <span class="blog-card-tag tag-ai">AI</span>
+                        <h4>Breaking into AI Research: A Practical Guide for Engineers</h4>
+                        <p>How to transition from software engineering to ML/AI research roles at top labs.</p>
+                        <div class="blog-card-meta">
+                            <span><i class="bi bi-clock me-1"></i> 7 min read</span>
+                            <span><i class="bi bi-calendar3 me-1"></i> Nov 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 6 -->
+                <div class="col-lg-4 col-md-6 blog-item" data-category="career">
+                    <div class="blog-card tilt-card">
+                        <span class="blog-card-tag tag-career">Career</span>
+                        <h4>Relocating to Germany: The IT Professional's Playbook</h4>
+                        <p>Visas, job search strategy, cultural tips, and the reality of the German tech market.</p>
+                        <div class="blog-card-meta">
+                            <span><i class="bi bi-clock me-1"></i> 12 min read</span>
+                            <span><i class="bi bi-calendar3 me-1"></i> Sep 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ SECTION
+         ============================================ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="section-label reveal">
+                        <i class="bi bi-question-circle"></i> FAQ
+                    </div>
+                    <h2 class="section-title reveal reveal-delay-1">Common <span class="gradient-text">Questions</span></h2>
+                    <p class="section-subtitle reveal reveal-delay-2">Can't find what you're looking for? Reach out directly via Telegram.</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="accordion accordion-custom" id="faqAccordion">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item reveal">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Do you consult C-Level executives?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Absolutely. I work with CTOs, VPs of Engineering, and other senior leaders who want to transition between companies, relocate, or move into advisory/board roles. My experience at Deutsche Bank and Huawei gives me deep insight into what executive hiring committees look for.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item reveal reveal-delay-1">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What results can I expect?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Clients typically see results within 2–8 weeks: improved response rates from recruiters (3–5x), interview invitations from target companies, and offers with salary increases of $15k–$45k/year. My 3000+ clients include professionals now at Google, Amazon, Samsung, Nvidia, and other top employers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item reveal reveal-delay-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Who are your typical clients?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    My clients range from career switchers with zero IT experience to senior ML researchers and C-Level executives. I work with software engineers, data scientists, product managers, QA engineers, designers, and tech leaders across all levels — from Junior to VP.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="accordion-item reveal reveal-delay-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Do you offer gift certificates?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! A career consultation makes an excellent gift for friends, family members, or colleagues who are looking to level up their career. Contact me via Telegram to arrange a personalized gift certificate.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="accordion-item reveal reveal-delay-4">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Can you assess my chances before I commit?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Of course. During our first call, I'll give you an honest assessment of your market position, realistic salary expectations, and a preliminary strategy. There's no obligation — I believe in earning your trust before anything else.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="accordion-item reveal">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    How is a career strategy built?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We start with a deep-dive analysis of your background, skills, and goals. Then I map your profile against real market demand, identify gaps, and create a step-by-step action plan — including which companies to target, how to position yourself, what to learn, and how to network effectively. Every strategy is uniquely yours.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-box reveal">
+                <div class="section-label mb-3" style="background: rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3);">
+                    <i class="bi bi-send"></i> Let's Talk
+                </div>
+                <h2 class="cta-title">Build Your Career with a <span class="gradient-text">Personal Consultant</span></h2>
+                <p class="cta-subtitle">Stop guessing. Start with a strategy tailored to your experience, goals, and target market.</p>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-4" style="position: relative; z-index: 1;">
+                    <a href="https://t.me/PerovaAN_2026" target="_blank" class="btn-neon">
+                        <i class="bi bi-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="tel:+79031827484" class="btn-ghost">
+                        <i class="bi bi-telephone"></i>
+                        <span>+7 (903) 182-74-84</span>
+                    </a>
+                </div>
+
+                <p style="font-size: 0.82rem; color: var(--text-muted); position: relative; z-index: 1;">
+                    <i class="bi bi-person-check me-1"></i> Anna Perova — Tech Career Founder
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <span class="brand-dot"></span>
+                        TechCareer<span class="gradient-text">.Space</span>
+                    </div>
+                    <p class="footer-text">
+                        Personal career consulting for IT & AI professionals. From your first tech job to C-Level — I build strategies that get results.
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="footer-heading">Navigation</div>
+                    <ul class="footer-links">
+                        <li><a href="#why">Why Me</a></li>
+                        <li><a href="#pricing">Services</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#guides">Guides</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="footer-heading">Services</div>
+                    <ul class="footer-links">
+                        <li><a href="#pricing">Basic Consultation</a></li>
+                        <li><a href="#pricing">Resume+ Package</a></li>
+                        <li><a href="#pricing">Maximum Package</a></li>
+                        <li><a href="#guides">Interview Guides</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="footer-heading">Contact</div>
+                    <div class="footer-contact-item">
+                        <i class="bi bi-telegram"></i>
+                        <a href="https://t.me/PerovaAN_2026" target="_blank">@PerovaAN_2026</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <a href="tel:+79031827484">+7 (903) 182-74-84</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="bi bi-person"></i>
+                        Anna Perova
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2024 TechCareerSpace. All rights reserved.
+                </div>
+                <div class="footer-socials">
+                    <a href="https://t.me/PerovaAN_2026" target="_blank" class="footer-social" aria-label="Telegram">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                    <a href="#" class="footer-social" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="#" class="footer-social" aria-label="YouTube">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         BOOTSTRAP JS
+         ============================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ============================================
+         CUSTOM JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // 1. NAVBAR SCROLL EFFECT
+        // ============================================
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // ============================================
+        // 2. MOBILE NAV TOGGLE
+        // ============================================
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('d-lg-flex');
+            const isExpanded = navMenu.classList.contains('d-lg-flex') && window.innerWidth < 992;
+            if (isExpanded) {
+                navMenu.style.display = 'block';
+            } else if (window.innerWidth < 992) {
+                navMenu.style.display = 'none';
+            }
+        });
+
+        // Close mobile nav on link click
+        navMenu.querySelectorAll('.nav-link-custom').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992) {
+                    navMenu.style.display = 'none';
+                }
+            });
+        });
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 992) {
+                navMenu.style.display = '';
+            }
+        });
+
+        // ============================================
+        // 3. SCROLL REVEAL (Intersection Observer)
+        // ============================================
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ============================================
+        // 4. ANIMATED COUNTER
+        // ============================================
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let countersStarted = false;
+
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const prefix = el.getAttribute('data-prefix') || '';
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(eased * target);
+
+                // Format with commas
+                el.textContent = prefix + current.toLocaleString('en-US') + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = prefix + target.toLocaleString('en-US') + suffix;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersStarted) {
+                    countersStarted = true;
+                    statNumbers.forEach(num => animateCounter(num));
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statNumbers.forEach(el => statsObserver.observe(el));
+
+        // ============================================
+        // 5. BLOG FILTERS
+        // ============================================
+        const filterBtns = document.querySelectorAll('.blog-filter-btn');
+        const blogItems = document.querySelectorAll('.blog-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                blogItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.classList.remove('hidden-card');
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        requestAnimationFrame(() => {
+                            item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        });
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.classList.add('hidden-card');
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // ============================================
+        // 6. 3D TILT EFFECT ON CARDS
+        // ============================================
+        const tiltCards = document.querySelectorAll('.tilt-card');
+
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -4;
+                const rotateY = ((x - centerX) / centerX) * 4;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+                card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            });
+
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.1s ease-out';
+            });
+        });
+
+        // ============================================
+        // 7. HERO PARTICLES (Canvas)
+        // ============================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            const hero = document.getElementById('hero');
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+
+        function createParticles() {
+            particles = [];
+            const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 15000));
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.4 + 0.1,
+                    hue: Math.random() > 0.5 ? 270 : (Math.random() > 0.5 ? 330 : 190) // purple, magenta, cyan
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p, i) => {
+                // Move
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                // Wrap around
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${p.hue}, 80%, 70%, ${p.opacity})`;
+                ctx.fill();
+
+                // Draw connections
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = p.x - particles[j].x;
+                    const dy = p.y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `hsla(270, 60%, 60%, ${0.06 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            animationId = requestAnimationFrame(drawParticles);
+        }
+
+        // Init particles
+        resizeCanvas();
+        createParticles();
+        drawParticles();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+
+        // Pause particles when hero not visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    cancelAnimationFrame(animationId);
+                } else {
+                    drawParticles();
+                }
+            });
+        }, { threshold: 0.05 });
+
+        heroObserver.observe(document.getElementById('hero'));
+
+        // ============================================
+        // 8. ACTIVE NAV LINK ON SCROLL
+        // ============================================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link-custom');
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '-80px 0px -50% 0px'
+        });
+
+        sections.forEach(section => navObserver.observe(section));
+
+        // ============================================
+        // 9. SMOOTH SCROLL FOR ALL ANCHOR LINKS
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // 10. REDUCED MOTION RESPECT
+        // ============================================
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Disable animations
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.style.filter = 'none';
+                el.style.transition = 'none';
+            });
+
+            // Stop particles
+            cancelAnimationFrame(animationId);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Disable float animations
+            document.querySelectorAll('.hero-blob, .hero-card, .float-tag').forEach(el => {
+                el.style.animation = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
